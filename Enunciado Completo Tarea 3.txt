@@ -1,0 +1,173 @@
+﻿PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE Curso: IMT2250-Optimización para Ciencia de Datos
+ESCUELA DE INGENIERÍA Semestre: 02-2023
+INSTITUTO DE INGENIERÍA MATEMÁTICA Profesor: A. Cataldo
+Y COMPUTACIONAL
+
+Tarea 3
+Fecha de Entrega: 20 de noviembre
+
+Reglas de la Tarea
+
+No seguir estas reglas podŕıa generar una penalización en la nota de la tarea.
+
+ La Tarea se desarrolla de manera individual o en grupos de dos integrantes. Si la tarea es entregada
+por un grupo, cada grupo entrega una sola tarea recordando colocar el nombre de los integrantes.
+
+ Se debe contestar en hojas independientes cada pregunta de la Tarea. Es decisión del estudiante o del
+grupo escribir las respuestas en computador o a mano, cualquiera sea esta decisión la tarea debe estar
+ordenada y legible.
+
+ El plazo de entrega vence impostergablemente el d́ıa lunes 20 de noviembre las 22:00 horas puntualmente.
+Aquellas Tareas no entregadas en la fecha y hora indicadas, serán consideradas como Tarea NO
+Entregada.
+
+ La Tarea se entrega en el buzón de tareas destinado para este efecto en Canvas.
+
+ En caso de que la tarea sea desarrollado en grupo, el desarrollo y discusión debe ocurrir dentro de
+cada grupo. No se distribuyan la resolución de las preguntas por separado, hagan realmente un trabajo
+grupal de desarrollo ya que el no hacerlo va contra la idea de aprendizaje colaborativo. Pueden discutir
+los problemas con el profesor, pero al final cada estudiante o grupo debe entregar sus propias soluciones,
+desarrolladas y escritas por el grupo. La copia o intento de copia a otros grupos será sancionada con
+REPROBACIÓN AUTOMÁTICA del curso1.
+
+ La tarea tiene 60 puntos.
+
+ Cualquier duda sobre el enunciado, me las pueden hacer al correo electrónico aecatald@ing.puc.cl.
+
+Problema 1.
+
+Considere el problema que enfrenta una empresa que produce rollos de papel de 118 cm. La empresa debe
+satisfacer una demanda diaria de rollos de distinto tamaño menores a 118 cm. En particular, asuma que la
+demanda para un d́ıa cualquiera se especifica en la tabla que se muestra a continuación, donde la primera
+columna de la tabla define el tamaño del rollo demandado y la segunda columna corresponde al número de
+rollos que se deben satisfacer en un d́ıa. Por ejemplo, la primera fila de la tabla define que se debe satisfacer
+una demanda de 100 rollos de 30 cm.
+
+Largo Cantidad requerida
+
+30 100
+40 80
+50 70
+
+Para resolver este problema se ha formulado el modelo de programación lineal que permite determinar la
+cantidad de rollos de 118 cm. que se deben cortar y de qué forma (tipos de corte). Asuma que esta empresa
+tiene como objetivo minimizar la pérdida total de rollos de papel que le genera su poĺıtica de corte. Este
+modelo utiliza variables que define el número de rollos de 118 cm. que serán cortados según el corte i.
+
+1Tener en consideración, para esto, el Código de Honor de la universidad
+
+
+
+De acuerdo con lo anterior, cada tipo de corte es una combinación de rollos de papel de 30, 40 y 50 cm. Por
+ejemplo, el tipo de corte 1 obtiene 3 rollos de 30 cm teniendo una pérdida de material de 18 cm. rollo. La
+siguiente tabla muestra los tipos de corte posibles y la pérdida asociada a cada corte.
+
+Tipo de corte Rollos 30 [cm] Rollos 40 [cm] Rollos 50 [cm] Pérdida del corte [cm]
+
+x1 3 0 0 28
+x2 2 1 0 18
+x3 1 2 0 8
+x4 2 0 1 8
+x5 0 1 1 28
+x6 0 0 2 18
+
+A partir de estos datos es posible diseñar el siguiente el modelo de programación lineal es el siguiente:
+
+mı́n 28x1 + 18x2 + 8x3 + 8x4 + 28x5 + 18x6 (P)
+s.a :
+
+3x1 + 2x2 + x3 + 2x4 ≥ 100
+x2 + 2x3 + x5 ≥ 80
+x4 + x5 + 2x6 ≥ 70
+x1, x2, x3, x4, x5, x6 ≥ 0
+
+Si consideramos que la solución óptima del problema tiene como costo reducido de las variables los valores
+presentados en la siguiente tabla, responda la siguientes preguntas:
+
+Tipo de corte Costo reducido
+
+x1 28
+x2 14
+x3 0
+x4 0
+x5 16
+x6 2
+
+(a) (4 puntos) Demuestre que el problema (P) admite solución óptima.
+
+(b) (4 puntos) Determine el nivel de pérdida que se genera con la solución óptima que se tiene.
+
+(c) (4 puntos) Interprete económicamente los precios sombra asociados a cada restricción.
+
+(d) (4 puntos) Encuentre el rango de sensibilidad del costo de la variable x2 tal que no cambie la base.
+
+(e) (4 puntos) ¿Cuál es la máxima demanda que se puede requerir de rollos de 30 cm, sin que cambie la
+solución óptima?
+
+Problema 2.
+
+Dado el siguiente problema de programación lineal,
+
+P ) min Z = − 3x1 − 4x2
+
+s.a. x1 + 2x2 ≤ 5
+x1 + x2 ≤ 4
+x1 , x2 ≥ 0
+
+(a) (4 puntos) Obtenga la solución óptima de P ) de manera gráfica.
+
+(b) (4 puntos) Resuelva el problema P ) mediante el Algoritmo Simplex, partiendo de la solución x1 = 0 y
+x2 = 5
+
+2 .
+
+(c) (4 puntos) Determine anaĺıticamente (a partir de la solución obtenida en i) el rango en que pueden
+variar individualmente (uno a la vez) los coeficientes de la función objetivo, para que la base óptima
+obtenida en (b) siga siendo óptima.
+
+
+
+(d) (4 puntos) Establezca anaĺıticamente el intervalo en que puede variar cada lado derecho de las restric-
+ciones, para que la estructura de la solución óptima obtenida en (b) no cambie.
+
+(e) (4 puntos) Considere ahora que es posible incorporar al problema P[) una] nueva variable x3 que tiene un
+1
+
+costo c3 = −5 y su columna asociada a la utilización de recursos es . Justifique si la incorporación
+3
+
+de la nueva variable modificará la solución óptima obtenida en (a) y (b).
+
+Problema 3.
+
+Considere que, apoyándose en el desarrollo de la Ciencia de Datos y la Optimización avanzada, usted desea
+conformar un nuevo equipo de fútbol. Para esto, usted ha logrado recopilar información sobre 325 futbolistas.
+Esta información corresponde a la valoración que se tiene, para cada uno de ellos, de las 4 posiciones en
+el campo de juego: Arquero, Defensa, Mediocampista y Delantero; y al precio de contratar a ese jugador.
+Esta valoración está medida en un coeficiente que va desde el 0 al 100, donde el 100 es la mayor valoración.
+Además, cuanta con la información de qué jugadores no debeŕıan compartir equipo con qué jugadores. Esta
+información está clasificada como 0 (pueden compartir equipo), 1 (conflicto 1: preferentemente no debeŕıan
+compartir equipo) y 2 (conflicto 2: no debeŕıan compartir equipo). Toda esta información se encuentra en el
+archivo Datos.xls, en la hojas Caracteŕısticas y Conflictos.
+
+Basado en esta información, se le pide conformar un equipo con la mayor valoración posible que cuente con
+33 jugadores (no se puede contratar a un jugador en más de una posición), de los cuales 3 son Arqueros, 10
+Defensas, 12 son Mediocampistas y 8 son Delanteros, y que se limite por el presupuesto disponible, que es de
+22000 pesos. Para esto, usted sabe que cada jugador de la lista puede ser contratado en cualquier de las 4
+posiciones, que la valoración total del equipo es la suma de las valoraciones individuales de la posición escogida
+para cada jugador contratado, y que el costo total de la plantilla de jugadores es la suma de los precios de
+contratación de todos los jugadores contratados.
+
+(a) (10 puntos) Diseñe un algoritmo, prográmelo y ejecútelo en Python, para seleccionar aleatoriamente
+jugadores a cada una de las 33 posiciones requeridas sin sobrepasar el presupuesto disponible. Registre
+la solución en: jugadores seleccionados y su posición, valoración total del equipo, total de conflictos
+(separados en conflictos 1 y conflictos 2) y listados de casos (jugadores en cada conflicto), y el costo
+total de la plantilla. Una vez diseñado este algoritmo, ejecútelo 1000 veces, y entregue la solución que
+tiene menos puntaje en conflictos (sume 1 punto a cada conflicto 1 y 5 puntos a cada conflicto 2). En
+caso de que haya más de una solución con el mismo puntaje en conflictos, escoja aquella que tenga
+mayor valoración total.
+
+(b) (10 puntos) Diseñe un modelo de optimización lineal en variables binarias, prográmelo y resuélvalo en
+Python/GUROBI, para encontrar la conformación de la plantilla de jugadores (33 posiciones), garanti-
+zando que no existan conflictos y que no se sobrepasa el presupuesto disponible. Compare esta solución
+con la obtenida en la parte (a).
